@@ -7,3 +7,7 @@ interface Props {
     todos: TodoInterface[];
     toggle: Function
 }
+
+interface AddTodoProps {
+    addTodoItem: Function
+}

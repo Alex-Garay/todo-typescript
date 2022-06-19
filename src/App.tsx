@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import TodoItem from './components/todoItem';
+import AddTodoItem from './components/addTodoItem'
 
 const initialTodoData: TodoInterface[] = [
   {
@@ -8,11 +9,17 @@ const initialTodoData: TodoInterface[] = [
   },
   {
       "message": "Make a cup of tea.",
-      "complete": true
+      "complete": false
   }, {
       "message": "Eat Breakfast.",
+      "complete": true
+  }, {
+      "message": "Study coding.",
       "complete": false
-  }
+}, {
+      "message": "Go to the gym.",
+      "complete": true
+},
 ]
 
 function App() {
@@ -31,10 +38,15 @@ function App() {
     setTodos(completeUpdated)
   }
 
+  const addTodoItem = (todoItem: TodoInterface) => {
+    setTodos([...todos, todoItem])
+  }
+
   return (
     <div className="App">
       <h1> Typescript Todo App</h1>
       <TodoItem todos={todos} toggle={toggleComplete}/>
+      <AddTodoItem addTodoItem={addTodoItem}/>
     </div>
   );
 }
