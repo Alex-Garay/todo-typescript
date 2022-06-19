@@ -4,23 +4,37 @@ import TodoItem from './components/todoItem';
 const initialTodoData: TodoInterface[] = [
   {
       "message": "Go for a morning walk.",
-      "status": true
+      "complete": true
   },
   {
       "message": "Make a cup of tea.",
-      "status": true
+      "complete": true
   }, {
       "message": "Eat Breakfast.",
-      "status": false
+      "complete": false
   }
 ]
 
 function App() {
   const [todos, setTodos] = useState(initialTodoData)
+
+  const toggleComplete = (selectedTodo: TodoInterface) => {
+    const completeUpdated = todos.map((todo) => {
+      if (selectedTodo === todo) {
+        return {
+          ...todo, 
+          complete: !todo.complete
+        }
+      }
+      return todo
+    })
+    setTodos(completeUpdated)
+  }
+
   return (
     <div className="App">
       <h1> Typescript Todo App</h1>
-      <TodoItem todos={todos}/>
+      <TodoItem todos={todos} toggle={toggleComplete}/>
     </div>
   );
 }

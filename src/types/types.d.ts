@@ -1,8 +1,9 @@
 interface TodoInterface {
     message: string;
-    status: boolean;
+    complete: boolean;
 }
 
 interface Props {
-    todos: TodoInterface[]
+    todos: TodoInterface[];
+    toggle: Function
 }
