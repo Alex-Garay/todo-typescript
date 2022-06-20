@@ -26,7 +26,7 @@ app.get('/todos', async (req, res) => {
 // Create a todo item
 app.post('/todo', async (req, res) => {
   try {
-    const { message, complete } = req.body;
+    const { message, complete }: TodoCreate = req.body;
     await TodoModel.create({
     'message': message,
     'complete': complete
@@ -38,10 +38,10 @@ app.post('/todo', async (req, res) => {
   }
 })
 
-//Update a todo's complete status
+// Update a todo's complete status
 app.put('/todo', async (req, res) => {
   try {
-    const { id, complete } = req.body
+    const { id, complete }: TodoUpdate = req.body
     await TodoModel.findByIdAndUpdate(id, {
       'complete': complete
     })
@@ -49,6 +49,18 @@ app.put('/todo', async (req, res) => {
   }
   catch {
     res.status(400).end();
+  }
+})
+
+// Delete a specific todo
+app.delete('/todo', async (req, res) => {
+  try {
+    const { _id }: number = req.body;
+    await TodoModel.findByIdAndDelete(_id)
+    res.status(200).end()
+  }
+  catch {
+    res.status(400).end()
   }
 })
 
