@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TodoItem from './components/todoItem';
 import AddTodoItem from './components/addTodoItem'
 
@@ -22,8 +22,13 @@ const initialTodoData: TodoInterface[] = [
 },
 ]
 
+
 function App() {
   const [todos, setTodos] = useState(initialTodoData)
+  
+  useEffect(() => {
+    console.log("Loaded")
+  })
 
   const toggleComplete = (selectedTodo: TodoInterface) => {
     const completeUpdated = todos.map((todo) => {

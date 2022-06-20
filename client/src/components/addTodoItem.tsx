@@ -17,8 +17,8 @@ const AddTodoItem: React.FC<AddTodoProps> = ({addTodoItem}) => {
     }
     return (
         <div>
-            <form onChange={(e) => handleChange(e)} onSubmit={(e) => handleSubmit(e)}>
-                <input type="text" value={todoValue} minLength={3}/>
+            <form onChange={(e) => handleChange(e)} onSubmit={(e) => handleSubmit(e)} id="todoForm">
+                <input onChange={(e) => {}} type="text" name="todo" value={todoValue} minLength={3}/>
                 <input type="submit" />
             </form>
         </div>

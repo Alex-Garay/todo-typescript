@@ -1,0 +1,4 @@
+# MongoDB Database Details
+MONGODB_URI=""
+MONGODB_USERNAME=""
+MONGODB_PASSWORD=""
